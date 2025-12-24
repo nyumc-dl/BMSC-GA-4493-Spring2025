@@ -15,7 +15,7 @@
 #SBATCH --mem=64G
 #SBATCH --time=04:00:00
 #SBATCH --gres=gpu:1
-#SBATCH --partition=gpu
+#SBATCH --partition=a100_short
 #SBATCH --output=lab9_notebooks_%j.log
 
 # Set error handling
@@ -32,14 +32,14 @@ echo "Time: $(date)"
 echo "=========================================="
 
 # Source the conda environment
-source /gpfs/data/tsirigoslab/home/dpath_env/bin/activate dpath_env
+#conda activate /gpfs/data/tsirigoslab/home/dpath_env
 
 echo "Environment activated: $CONDA_DEFAULT_ENV"
 python --version
 nvidia-smi
 
-# Set working directory
-NOTEBOOK_DIR="/Users/nikolas/Desktop/Projects/TA/BMSC-GA-4493-Spring2025/labs/lab9"
+# Set working directory (Change this)
+NOTEBOOK_DIR="/gpfs/scratch/nk4167/BMSC-GA-4493-Spring2025/labs/lab9"
 RESULTS_DIR="${NOTEBOOK_DIR}/results_${SLURM_JOB_ID}"
 mkdir -p "$RESULTS_DIR"
 
